@@ -44,4 +44,3 @@ RUN chown -R www-data:www-data \
 
 EXPOSE 8080
 
-CMD ["sh", "-c", "php artisan serve --host=0.0.0.0 --port=${PORT:-8080}"]
