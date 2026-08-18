@@ -28,10 +28,15 @@ WORKDIR /var/www/html
 
 COPY . .
 
+RUN ls -la /var/www/html && test -f /var/www/html/artisan
+
 RUN composer install \
     --no-dev \
     --optimize-autoloader \
-    --no-interaction
+    --no-interaction \
+    --no-scripts
+
+RUN php artisan package:discover --ansi
 
 RUN chown -R www-data:www-data \
     storage \
